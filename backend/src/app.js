@@ -1,6 +1,8 @@
 const express = require("express");
 require("./config/db");
+require("./config/mailer");
 require("./jobs/dueChecker.job");
+require("./workers/notification.worker");
 
 const app = express();
 app.use(express.json());

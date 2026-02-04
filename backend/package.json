@@ -8,5 +8,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "bullmq": "^5.67.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "ioredis": "^5.9.2",
+    "mongoose": "^9.1.5",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^8.0.0"
+  }
 }

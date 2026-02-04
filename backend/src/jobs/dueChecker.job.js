@@ -1,12 +1,12 @@
 const cron = require("node-cron");
 const User = require("../models/User");
-const { scheduleServiceDue } = require("../services/notification.service");
+const { scheduleServiceDue } = require("../services/notification.server");
 
 cron.schedule("0 0 * * *", async () => {
   const today = new Date();
 
   const dueUsers = await User.find({
-    nextServiceDate: { $lte: today }
+    nextServiceDate: { $lte: today },
   });
 
   for (const user of dueUsers) {
