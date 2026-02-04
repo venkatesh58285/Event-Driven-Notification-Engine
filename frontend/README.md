@@ -1,16 +1,51 @@
-# React + Vite
+# Frontend — Admin Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+What this folder contains
 
-Currently, two official plugins are available:
+- React + Vite admin UI (`src/pages/AdminDashboard.jsx`)
+- Small HTTP client wrapper (`src/api.js`) pointing at the backend `http://localhost:5000/admin`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Prerequisites
 
-## React Compiler
+- Node.js 16+ and npm
+- Backend running at `http://localhost:5000` (see backend/README.md)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Install and run
 
-## Expanding the ESLint configuration
+1. Install dependencies
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+cd frontend
+npm install
+```
+
+2. Start dev server
+
+```bash
+npm run dev
+# opens at http://localhost:5173
+```
+
+## How to test email sending
+
+1. Open the dashboard in the browser: `http://localhost:5173`
+2. Use the "Create & Schedule Email" form to send a test email:
+   - Provide `userId` and the recipient `email` address
+   - Write a `message` and set `Delay` to `0` to send immediately
+3. The frontend will call `POST /admin/notification` on the backend
+4. The worker sends the email and logs the result to the backend
+
+
+# Frontend — Minimal
+
+Tech / packages used
+
+- `react`, `react-dom` — UI library
+- `vite` — dev server and bundler
+- `axios` — HTTP client used to call the backend
+
+Why
+
+- Lightweight React + Vite setup for fast development.
+
+
