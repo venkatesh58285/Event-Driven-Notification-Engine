@@ -23,45 +23,44 @@ This project is a lightweight, event-driven notification engine that:
 If you want to run everything locally, follow the step-by-step guides in the backend and frontend READMEs.
 
 Architecture
-┌─────────────────────────────────────────────────────┐
-│ FRONTEND (React) │
-│ - Dashboard to view logs & due users │
-│ - Form to manually send test emails │
-└────────────────┬────────────────────────────────────┘
-│
-│ HTTP POST /notification
+
+1) FRONTEND (React) 
+ - Dashboard to view logs & due users 
+ - Form to manually send test emails 
+
+
+ HTTP POST /notification
 ▼
-┌─────────────────────────────────────────────────────┐
-│ BACKEND (Node.js/Express) │
-│ - Controller validates & queues job │
-│ - Routes handle incoming requests │
-│ - Redis connection config │
-│ - Gmail/nodemailer config │
-└────────────────┬────────────────────────────────────┘
-│
-│ Add to queue
+
+2) BACKEND (Node.js/Express) 
+ - Controller validates & queues job 
+ - Routes handle incoming requests 
+ - Redis connection config 
+ - Gmail/nodemailer config 
+
+
+3) Add to queue
 ▼
-┌─────────────────────────────────────────────────────┐
-│ REDIS QUEUE (BullMQ) │
-│ - Fast, in-memory job queue │
-│ - Handles delays, retries, persistence │
-│ - Worker picks up jobs │
-└────────────────┬────────────────────────────────────┘
-│
-│ Job ready to process
+
+4) REDIS QUEUE (BullMQ) 
+ - Fast, in-memory job queue 
+ - Handles delays, retries, persistence 
+ - Worker picks up jobs 
+
+
+5) Job ready to process
 ▼
-┌─────────────────────────────────────────────────────┐
-│ WORKER (Node.js Process) │
-│ - Listens for jobs in queue │
-│ - Sends email via Gmail API │
-│ - Logs result to MongoDB │
-│ - Retries on failure │
-└────────────────┬────────────────────────────────────┘
-│
-│ Save status
+
+6) WORKER (Node.js Process) 
+ - Listens for jobs in queue 
+ - Sends email via Gmail API 
+ - Logs result to MongoDB 
+ - Retries on failure 
+
+
+7) Save status
 ▼
-┌─────────────────────────────────────────────────────┐
-│ MONGODB (Database) │
-│ - Users collection (customer data) │
-│ - NotificationLog (email history) │
-└─────────────────────────────────────────────────────┘
+
+8) MONGODB (Database) 
+ - Users collection (customer data) 
+ - NotificationLog (email history) 
